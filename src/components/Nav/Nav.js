@@ -14,6 +14,15 @@ export class Nav extends Component {
         </div>
         <div className="right-side-nav">
           <ul>
+          <li>
+              {this.props.user ? (
+                <NavLink activeClassName="selected" to="/movie">
+                  Movie Search
+                </NavLink>
+              ) : (
+                ""
+              )}
+            </li>
             <li>
               {this.props.user ? (
                 <NavLink activeClassName="selected" to="/profile">

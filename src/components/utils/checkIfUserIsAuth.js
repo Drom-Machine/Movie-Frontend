@@ -1,4 +1,5 @@
-import jwtDecode from "jwt-decode";
+  import jwtDecode from "jwt-decode";
+import setAxiosAuthToken from "./setAxiosAuthToken";
 
 const checkIfUserIsAuth = () => {
   //check if token exists, if it doesnt exists return false
@@ -13,8 +14,10 @@ const checkIfUserIsAuth = () => {
     let decodedToken = jwtDecode(getJwtToken);
 
     if (decodedToken.exp < currentTime) {
+      setAxiosAuthToken(null);
       return false;
     } else {
+      setAxiosAuthToken(getJwtToken);
       return true;
     }
   } else {
